@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FilePickerDemo</title>
+  <script src="https://api.filepicker.io/v1/filepicker.js"  type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-2.1.0.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+<button name="file" onclick="selectFile();">Select File</button>
+<div id="upload_result"></div>
+
+<script type="text/javascript">
+  filepicker.setKey("YOUR_API_KEY");
+
+  function selectFile() {
+    filepicker.pick(
+      {
+        mimetypes: ['image/*', 'text/plain'],
+        services:['COMPUTER', 'FACEBOOK', 'GMAIL'],
+      },
+      function(InkBlob){
+         $("#upload_result").replaceWith(JSON.stringify(InkBlob));
+      },
+      function(FPError){
+        $("#upload_result").replaceWith(JSON.stringify(FPError));
+      } 
+    );
+  }
+</script>
+
+</body>
+</html>
+
+
