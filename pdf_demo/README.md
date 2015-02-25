@@ -25,3 +25,17 @@ goapp serve .
 ```
 goapp deploy .
 ```
+
+### Filepicker plain text presentation
+
+1. Install mdp
+
+```
+brew install mdp
+```
+
+2. Run presentation
+
+```
+mdp demo.md
+```
