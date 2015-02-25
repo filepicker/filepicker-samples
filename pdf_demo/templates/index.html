@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>PDF Viewer</title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/stylesheets/screen.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+  <script src="/javascripts/picker.js"></script>
+
+</head>
+<body class="flex">
+
+  <div class="device">
+
+    <div class="device__screen  flex">
+
+      <div class="device__list">
+        <div class="wrapper">
+          <table class="table  table--list">
+            <tbody id="books">
+	      {{range .}}
+              <tr id="{{.Handle}}">
+                <td><a href="/books/{{.Handle}}" title="Very long PDF file name here"><img src="{{.Url}}/convert?page=1" alt="" class="img-thumbnail"></a></td>
+                <!-- File name could be very long string, css will prevent table
+                collapse, just remember to add string also as title value -->
+                <td><a class="doc__title" href="/books/{{.Handle}}" title="{{.Filename}}">{{.Filename}}</a></td>
+                <td>{{.Size}} MB</td>
+                <td>
+                  <button class="btn  btn-sm  btn-danger" onclick="delete_book('{{.Url}}','{{.Handle}}')"><i class="fa  fa-times"></i></button>
+                  <button href="#" class="btn  btn-sm  btn-success" onclick="save_book('{{.Url}}')"><i class="fa  fa-cloud-download"></i> Download</button>
+                </td>
+              </tr>
+	      {{ end }}
+            </tbody>
+          </table>
+          <p class="add-file">
+            <a id="add_file" href="#" class="btn  btn-sm  btn-success" onclick="add_book()"><i class="fa  fa-plus"></i> Add Book</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="book_modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true"><i class="fa fa-times"></i></span><span class="sr-only">Close</span></button>
+	  <h2 id="demo_modal_header" class="modal-title primary-heading"></h2>
+	</div>
+	<div class="modal-body" id="modal_body">
+	  <p class="lead">
+	    <a id="file_url" href=""></a>
+	  </p>
+	</div>
+      </div>
+    </div>
+    </div>
+</body>
+</html>
