@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table>
+        <tbody>
+            {% for f in files %}
+                <tr>
+                    <td><a href="{{ f.id }}">{{ f.id }}</a></td>
+                    <td>{{ f.name }}</td>
+                    <td>{{ f.uploaded_file }}</td>
+                    <td><img src="{{ f.uploaded_file }}"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

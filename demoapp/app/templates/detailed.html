@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>
+</head>
+<body>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" name="w" placeholder="Width">
+        <input type="text" name="h" placeholder="High">
+        <select name="fit">
+            <option value=""></option>
+            <option value="scale">Scale</option>
+            <option value="max">Max</option>
+        </select>
+        <input type="text" name="blurAmount" placeholder="Blur Amount">
+        <input type="submit">
+    </form>
+    <p>Id: {{ file.id }}</p>
+    <p>Name: {{ file.name }}</p>
+    <p>Url: {{ file.uploaded_file }}</p>
+    <p>Image: <img src="{{ file.uploaded_file }}"></p>
+    {% if convert_parameters %}
+        <p>Conversion: <img src="{{ file.uploaded_file }}{{ convert_parameters }}"></p>
+    {% endif %}
+    <p><a href="/list/{{ file.id }}/delete/">DELETE</a></p>
+    <p><a href="" id="save">Save file</a></p>
+    <script>
+      filepicker.setKey('{{ file_picker_api_key }}');
+      var el = document.getElementById('save');
+      el.onclick = save_picture;
+
+      function save_picture() {
+        filepicker.exportFile('{{ file.uploaded_file }}');
+        return false;
+      }
+    </script>
+</body>
+</html>
