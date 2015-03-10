@@ -8,7 +8,11 @@
                     <td><a href="{{ f.id }}">{{ f.id }}</a></td>
                     <td>{{ f.text }}</td>
                     <td>{{ f.fpfile }}</td>
-                    <td><img src="{{ f.fpfile_url }}"></td>
+                    <td>
+                        {% for i in f.images_list %}
+                            <img src="{{ i }}">
+                        {% endfor %}
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

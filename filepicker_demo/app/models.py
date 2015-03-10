@@ -13,16 +13,25 @@ class DemoModel(models.Model):
                          additional_params={'data-fp-multiple': 'true'})
     fpfile_url = models.URLField(null=True)
 
+    def images_list(self):
+        return self.fpfile_url.split(',')
+
     # Image preview for django admin
     def admin_image(self):
-        return '<img src="%s"/>' % self.fpfile_url
+        img = '<img src="{}"/>' * (len(self.images_list()))
+        print img
+        print self.images_list()
+        img = img.format(*self.images_list())
+        # print res
+        return img
     admin_image.allow_tags = True
 
     def delete(self, using=None):
-        try:
-            requests.delete(self.fpfile_url, params={'key': settings.FILEPICKER_API_KEY})
-        except Exception:
-            pass
+        for f in self.images_list():
+            try:
+                requests.delete(f, params={'key': settings.FILEPICKER_API_KEY})
+            except Exception:
+                pass
         super(DemoModel, self).delete()
 
 

@@ -8,7 +8,7 @@ class DemoModelAdmin(admin.ModelAdmin):
     """
 
     readonly_fields = ('fpfile_url', )
-    list_display = ('id', 'fpfile', 'fpfile_url', 'admin_image')
+    list_display = ('id', 'fpfile', 'admin_image')
 
 
 admin.site.register(DemoModel, DemoModelAdmin)

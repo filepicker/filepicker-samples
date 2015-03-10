@@ -27,7 +27,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-FILEPICKER_API_KEY = 'AWWbeyNKSRw6VU2B7QdbDz'
+FILEPICKER_API_KEY = 'Replace with your API key'
 
 MEDIA_ROOT = os.path.join(CWD, 'media')
 
