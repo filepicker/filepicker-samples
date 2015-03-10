@@ -6,4 +6,5 @@ Filepicker Sample Apps
 [PDF Viewer](https://github.com/Ink/samples/tree/master/pdf_demo) - PDF Viewer
 
 [Simple filepicker app](https://github.com/Ink/samples/tree/master/demoapp) - Simple filepicker integration
-(link will work in master branch)
+
+[django-filepicker example](https://github.com/Ink/samples/tree/master/filepicker_demo) - Example application for django-filepicker library
