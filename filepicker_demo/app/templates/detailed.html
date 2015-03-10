@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block media %}{{ form.media }}{% endblock %}
+{% block body %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="text" name="w" placeholder="Width">
+        <input type="text" name="h" placeholder="High">
+        <select name="fit">
+            <option value=""></option>
+            <option value="scale">Scale</option>
+            <option value="max">Max</option>
+        </select>
+        <input type="text" name="blurAmount" placeholder="Blur Amount">
+        <input type="submit">
+    </form>
+    <p>Id: {{ file.id }}</p>
+    <p>Name: {{ file.text }}</p>
+    <p>Url: {{ file.fpfile }}</p>
+    <p>Image: <img src="{{ file.fpfile_url }}"></p>
+    {% if convert_parameters %}
+        <p>Conversion: <img src="{{ file.fpfile_url }}{{ convert_parameters }}"></p>
+    {% endif %}
+    <p><a href="/list/{{ file.id }}/delete/">DELETE</a></p>
+    <p><a href="" id="save">Save file</a></p>
+{% endblock %}
+
+{% block script %}
+    <script>
+        filepicker.setKey('{{ file_picker_api_key }}');
+        var el = document.getElementById('save');
+        el.onclick = save_picture;
+
+        function save_picture() {
+            filepicker.exportFile('{{ file.fpfile_url }}');
+            return false;
+        }
+    </script>
+{% endblock %}

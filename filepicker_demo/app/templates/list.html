@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body%}
+    <table>
+        <tbody>
+            {% for f in files %}
+                <tr>
+                    <td><a href="{{ f.id }}">{{ f.id }}</a></td>
+                    <td>{{ f.text }}</td>
+                    <td>{{ f.fpfile }}</td>
+                    <td><img src="{{ f.fpfile_url }}"></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

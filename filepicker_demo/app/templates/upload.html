@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Image upload{% endblock %}
+{% block media %}
+    {{ form.media }}
+{% endblock %}
+
+
+{% block body %}
+    <form method="post" action="{% url 'upload' %}">
+        {%csrf_token%}
+        {{ form.as_p }}
+        <p><input type="submit" value="Submit"/></p>
+    </form>
+    <h3>Form code:</h3>
+    <pre>import django_filepicker
+
+class DemoModel(models.Model):
+    text = models.CharField(max_length=255)
+    fpfile = django_filepicker.models.FPFileField(upload_to='uploads')
+    </pre>
+    <h3>Processing the form</h3>
+    <pre>form = models.DemoModelForm(request.POST, request.FILES)
+if form.is_valid():
+    #Save will read the data and upload it to the location defined in TestModel
+    form.save()
+    </pre>
+
+    <hr/>
+    <p>Code available on GitHub at <a href="https://github.com/Filepicker/django-filepicker">https://github.com/Filepicker/django-filepicker</a>.</p>
+    <p>For more info and to get an api key, check out <a href="https://filepicker.io/">Filepicker.io</a>.</p>
+{% endblock %}
