@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 
-from models import FileUploaderModel
+from models import FileUploaderModel, FileUploaderForm
 
 
 def index(request):
@@ -19,10 +19,10 @@ def save_image(request):
         if not name or not uploaded_file:
             pass
         else:
-            FileUploaderModel.objects.create(
-                name=request.POST.get('name'),
-                uploaded_file=request.POST.get('uploaded_file')
-            )
+            form = FileUploaderForm(request.POST)
+            if form.is_valid():
+                form.save()
+
         return redirect('images_list')
 
     return render(request, 'upload.html', context_instance=RequestContext(request))
@@ -62,7 +62,11 @@ def image_delete(request, fid):
         return redirect('images_list')
 
     url = f.uploaded_file
-    requests.delete(url, params={'key': settings.FILE_PICKER_API_KEY})
+    for i in url.split(','):
+        try:
+            requests.delete(i, params={'key': settings.FILE_PICKER_API_KEY})
+        except Exception:
+            pass
     f.delete()
 
     return redirect('images_list')

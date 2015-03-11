@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Demo Filepicker</title>
+{% extends "base.html" %}
+
+{% block title %}Demo Filepicker{% endblock %}
+
+{% block media %}
     <script type="text/javascript" src="http://api.filepicker.io/v1/filepicker.js"></script>
-</head>
-<body>
-    <nav>
-        <a href="/upload/">Upload</a>
-        <a href="/list/">List</a>
-    </nav>
+{% endblock %}
+
+{% block body %}
     <form method="POST" action="">
         {% csrf_token %}
         <input type="text" name="name">
         <input data-fp-apikey="{{ file_picker_api_key }}" data-fp-mimetypes="*/*" data-fp-multiple="true" name="uploaded_file" type="filepicker-dragdrop" style="display: none;" />
         <input type="submit">
     </form>
-
-</body>
-</html>
+{% endblock %}
