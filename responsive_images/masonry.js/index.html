@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Filestack's Responsive Images with Masonry.js</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    .grid-sizer, .grid-item {
+      width: 20%;
+    }
+    .grid-item--width2 {
+      width: 40%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+    <div class="grid-sizer"></div>
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/R0000403.jpg">
+    <img class="grid-item grid-item--width2" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/sail.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/fox_in_forest1.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/butterfly.jpg">
+    <img class="grid-item grid-item--width2" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/R0000403.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/sail.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/fox_in_forest1.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/butterfly.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/R0000403.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/sail.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/fox_in_forest1.jpg">
+    <img class="grid-item grid-item--width2" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/butterfly.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/R0000403.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/sail.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/fox_in_forest1.jpg">
+    <img class="grid-item" data-fp-src="https://d1wtqaffaaj63z.cloudfront.net/images/butterfly.jpg">
+  </div>
+
+  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+  <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+  <script src="https://api.filestackapi.com/filestack.js"></script>
+  <script>
+    filepicker.setKey('l5uQ3k7FQ5GoYCHyTdZV');
+
+    var msnry = new Masonry('.grid', {
+      itemSelector: '.grid-item',
+      columnWidth: '.grid-sizer',
+      percentPosition: true
+    });
+
+    imagesLoaded('.grid', function () {
+      msnry.layout();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Filestack's Responsive Images with unveil.js</title>
+  <style>
+    img {
+      width: 500px;
+      height: auto;
+      margin: 80px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/R0000403.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/sail.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/fox_in_forest1.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/butterfly.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/R0000403.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/sail.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/fox_in_forest1.jpg"></p>
+  <p><img data-src="https://d1wtqaffaaj63z.cloudfront.net/images/butterfly.jpg"></p>
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="jquery.unveil.js"></script>
+  <script src="https://api.filestackapi.com/filestack.js"></script>
+  <script>
+    filepicker.setKey('l5uQ3k7FQ5GoYCHyTdZV');
+
+    $(document).ready(function() {
+      $('img').unveil(100, function () {
+        filepicker.responsive(this);
+      });
+    });
+  </script>
+
+</body>
+</html>
